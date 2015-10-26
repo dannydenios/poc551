@@ -1,0 +1,40 @@
+##############################################################
+################# Hybris build generated files ###############
+
+hybris/bin/ext-*
+hybris/bin/platform
+
+hybris/config/solr
+
+hybris/data*/
+hybris/log/
+hybris/temp/
+
+##############################################################
+############### TechEdge build generated files ###############
+
+project-builder/temp/
+/artifacts/
+
+
+project-builder/*.log
+
+##############################################################
+################## Eclipse generated files ###################
+
+**/eclipsebin/
+**/.metadata/
+**/RemoteSystemsTempFiles/
+.eclipsebin
+
+##############################################################
+####################### Other files ##########################
+
+hybris/bin/platform/tomcat/jrebel
+hybris/**/rebel.xml
+
+**/.DS_Store
+
+##############################################################
+
+/.DS_Store
