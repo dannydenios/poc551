@@ -12,25 +12,105 @@ INSERT_UPDATE Warehouse;code[unique=true];vendor(code);default[default=true]
 ;warehouse_c;giacomini;
   
 INSERT_UPDATE StockLevel;available;warehouse(code)[unique=true];inStockStatus(code);maxPreOrder;maxStockLevelHistoryCount;overSelling;preOrder;productCode[unique=true];reserved
-;100;warehouse_c;forceInStock;0;-1;0;0;0001;0
-;100;warehouse_c;forceInStock;0;-1;0;0;0002;0
-;100;warehouse_c;forceInStock;0;-1;0;0;0004;0
-;100;warehouse_c;forceInStock;0;-1;0;0;0005;0
-;100;warehouse_c;forceInStock;0;-1;0;0;0006;0
-;100;warehouse_c;forceInStock;0;-1;0;0;0007;0
-;100;warehouse_c;notSpecified;0;-1;0;0;0100;0
-;100;warehouse_c;notSpecified;0;-1;0;0;0110;0
-;100;warehouse_c;notSpecified;0;-1;0;0;0200;0
-;100;warehouse_c;notSpecified;0;-1;0;0;0210;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R500Y221	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R500Y222	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R500Y223	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R500Y224	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R500Y225	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R500Y101	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R500Y102	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R500Y103	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R500Y104	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R583Y004	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R583Y005	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R588RY010;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R588RY011;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R588ZY001;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R251X21	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R251X22	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R251X23	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R251X24	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R251X25	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R251X26	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;G213SP004;0
+;100;warehouse_c;forceInStock;0;-1;0;0;P790Y002	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R792Y004	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R792Y005	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R795VY004;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R795VY005;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R179X034	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R179X041	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R179X046	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R179X070	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R179X082	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R179X087	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R179X105	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R178RY011;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R178RY012;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R178RY013;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R178RX012;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R178RX013;0
+;100;warehouse_c;forceInStock;0;-1;0;0;KTD3Y003	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;KTD5Y006	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;KTDPY001	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;KTDSY001	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;GS550Y001;0
+;100;warehouse_c;forceInStock;0;-1;0;0;GS550Y002;0
+;100;warehouse_c;forceInStock;0;-1;0;0;K377Y001	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;K377Y002	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;P50Y003	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R182Y006	;0
+;100;warehouse_c;forceInStock;0;-1;0;0;R586SY011;0
+;100;warehouse_c;forceInStock;0;-1;0;0;VESY020	;0
   
 UPDATE Product;code[unique=true];$catalogVersion;stockLevels(productCode,warehouse(code));vendors(code)
-;0001;;0001:warehouse_c;giacomini
-;0002;;0002:warehouse_c;giacomini
-;0004;;0004:warehouse_c;giacomini
-;0005;;0005:warehouse_c;giacomini
-;0006;;0006:warehouse_c;giacomini
-;0007;;0007:warehouse_c;giacomini
-;0100;;0100:warehouse_c;giacomini
-;0110;;0110:warehouse_c;giacomini
-;0200;;0200:warehouse_c;giacomini
-;0210;;0210:warehouse_c;giacomini
+;R500Y221	;;R500Y221:warehouse_c;giacomini
+;R500Y222	;;R500Y222:warehouse_c;giacomini
+;R500Y223	;;R500Y223:warehouse_c;giacomini
+;R500Y224	;;R500Y224:warehouse_c;giacomini
+;R500Y225	;;R500Y225:warehouse_c;giacomini
+;R500Y101	;;R500Y101:warehouse_c;giacomini
+;R500Y102	;;R500Y102:warehouse_c;giacomini
+;R500Y103	;;R500Y103:warehouse_c;giacomini
+;R500Y104	;;R500Y104:warehouse_c;giacomini
+;R583Y004	;;R583Y004:warehouse_c;giacomini	
+;R583Y005	;;R583Y005:warehouse_c;giacomini
+;R588RY010  ;;R588RY010:warehouse_c;giacomini
+;R588RY011  ;;R588RY011:warehouse_c;giacomini
+;R588ZY001  ;;R588ZY001:warehouse_c;giacomini
+;R251X21	;;R251X21:warehouse_c;giacomini
+;R251X22	;;R251X22:warehouse_c;giacomini
+;R251X23	;;R251X23:warehouse_c;giacomini
+;R251X24	;;R251X24:warehouse_c;giacomini
+;R251X25	;;R251X25:warehouse_c;giacomini
+;R251X26	;;R251X26:warehouse_c;giacomini
+;G213SP004  ;;G213SP004:warehouse_c;giacomini
+;P790Y002	;;P790Y002:warehouse_c;giacomini
+;R792Y004	;;R792Y004:warehouse_c;giacomini
+;R792Y005	;;R792Y005:warehouse_c;giacomini
+;R795VY004  ;;R795VY004:warehouse_c;giacomini
+;R795VY005  ;;R795VY005:warehouse_c;giacomini
+;R179X034	;;R179X034:warehouse_c;giacomini
+;R179X041	;;R179X041:warehouse_c;giacomini
+;R179X046	;;R179X046:warehouse_c;giacomini
+;R179X070	;;R179X070:warehouse_c;giacomini
+;R179X082	;;R179X082:warehouse_c;giacomini
+;R179X087	;;R179X087:warehouse_c;giacomini
+;R179X105	;;R179X105:warehouse_c;giacomini
+;R178RY011  ;;R178RY011:warehouse_c;giacomini
+;R178RY012  ;;R178RY012:warehouse_c;giacomini
+;R178RY013  ;;R178RY013:warehouse_c;giacomini
+;R178RX012  ;;R178RX012:warehouse_c;giacomini
+;R178RX013  ;;R178RX013:warehouse_c;giacomini
+;KTD3Y003	;;KTD3Y003:warehouse_c;giacomini
+;KTD5Y006	;;KTD5Y006:warehouse_c;giacomini
+;KTDPY001	;;KTDPY001:warehouse_c;giacomini
+;KTDSY001	;;KTDSY001:warehouse_c;giacomini
+;GS550Y001  ;;GS550Y001:warehouse_c;giacomini
+;GS550Y002  ;;GS550Y002:warehouse_c;giacomini
+;K377Y001	;;K377Y001:warehouse_c;giacomini
+;K377Y002	;;K377Y002:warehouse_c;giacomini
+;P50Y003	;;P50Y003:warehouse_c;giacomini
+;R182Y006	;;R182Y006:warehouse_c;giacomini
+;R586SY011  ;;R586SY011:warehouse_c;giacomini
+;VESY020	;;VESY020:warehouse_c;giacomini
