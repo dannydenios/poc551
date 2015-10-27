@@ -21,6 +21,12 @@ resources/**/*-webtestclasses.xml
 resources/beans.xsd
 
 ##############################################################
+################### tomcat and server files ##################
+
+tomcat/
+tcServer/
+
+##############################################################
 ################## Eclipse generated files ###################
 
 eclipsebin/
@@ -30,6 +36,17 @@ RemoteSystemsTempFiles/
 
 ##############################################################
 ####################### Other files ##########################
+
+readme.txt
+localextensions.xmlOLD
+local.propertiesOLD
+local.properties
+licence
+languages
+customize
+
+.classpath
+.project
 
 .DS_Store
 /**/.DS_Store

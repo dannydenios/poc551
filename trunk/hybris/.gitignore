@@ -18,6 +18,8 @@ hybris/temp/
 **/gensrc/
 **/testclasses/
 
+sampleconfigurations/
+
 ##############################################################
 ############### TechEdge build generated files ###############
 
