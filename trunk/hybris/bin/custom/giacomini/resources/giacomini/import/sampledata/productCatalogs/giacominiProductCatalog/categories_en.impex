@@ -8,9 +8,46 @@ $catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[defa
 $lang=en
    
 UPDATE Category;$catalogVersion;code[unique=true];name[lang=$lang];description[lang=$lang]
-;;1;Catalogue;
-;;100;Vitamins;
-;;200;Cosmetics;
-;;210;Personal Care;
-;;220;Beauty;
+;;C01			;Contabilizzazione energia e consumi idrici;
+;;C0101			;Contabilizzazione indiretta (ripartitori);
+;;C0102			;Moduli di utenza per contabilizzazione diretta;
+;;C0103			;Satelliti di utenza per contabilizzazione diretta;
+;;GE556			;Satelliti di utenza standard;
+;;GE556-1		;Satelliti di utenza con doppio scambiatore;
+;;GE556-2		;Satellite di utenza con regolazione elettronica;
+;;GE556-3		;Satellite per produzione acqua sanitaria;
+;;C02			;Sanitario;
+;;C0201			;Cassette premontate ;
+;;C0202			;Accessori;
+;;C0203			;Cassette vuote;
+;;R500-2		;Cassetta metallica da incasso per collettori;
+;;R500			;Cassetta metallica da incasso per collettori;
+;;R583			;Supporto metallico per collettori R580 o modulari DN25. Per fissaggio a muro;
+;;R588R			;Supporto metallico per collettori impiegati in cassetta R557I;
+;;R588Z			;Supporto metallico ribassato per collettori R553D, R553F. Per impiego in cassette R500-2;
+;;C03			;Riscaldamento;
+;;C0301			;Rubinetti a sfera;
+;;C0302			;Valvole a sfera;
+;;C0303			;Valvole a sfera post contatore gas;
+;;R251D			;Valvola con attacchi F-F;
+;;G213SP		;Valvola a sfera per impianti gas sottotraccia, con attacchi filettati maschio a sede piana;
+;;P790-2		;Adattatore per presa di pressione;
+;;R792			;Valvola a sfera non cromata, a squadra, con predisposizione per presa di pressione;
+;;R795V			;Kit di collegamento per R790;
+;;C04			;Tubazioni e raccorderia;
+;;C0401			;Tubazione multistrato PEX-AL-PEX tubazioni in PEX e PE-RT;
+;;C0402			;Raccordi a pressare serie RM per acqua e gas;
+;;C0403			;Adattatori per tubi plastici e per tubi rame, raccordi per adattatori;
+;;R179			;Adattatori per tubi in plastica;
+;;R178R			;Raccordo per trasformare la base in adattatore;
+;;C05			;Rinnovabili;
+;;C0501			;Componenti per impianti solari a biomassa;
+;;C0502			;Componenti per impianti solari termici;
+;;KTD			;Centralina differenziale;
+;;GS550			;Gruppo di controllo produzione acqua calda sanitaria in impianti solari termici;
+;;K377			;Glicole antigelo propilenico, anticorrosivo e biodegradabile, per impianti solari termici;
+;;P50			;Kit raccordi per aumento attacchi rubinetti carico/scarico dei gruppi di circolazione solare;
+;;R182			;Raccordo a T per il montaggio della valvola automatica di sfogo aria sui collettori solari;
+;;R586S			;Gruppo di circolazione preassemblato a due vie, per impianti solari termici, con centralina inclusa;
+;;VES-2			;Staffa di fissaggio per vaso di espansione;
 

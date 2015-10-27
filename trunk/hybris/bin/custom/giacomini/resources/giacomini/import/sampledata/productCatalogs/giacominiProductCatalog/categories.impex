@@ -10,15 +10,87 @@ $categories=target(code, $catalogVersion)[unique=true]
 
 # Insert Categories
 INSERT_UPDATE Category;code[unique=true];allowedPrincipals(uid)[default='customergroup'];$catalogVersion
- ;1				
- ;100
- ;200
- ;210
- ;220
+;C01
+;C0101
+;C0102
+;C0103
+;GE556
+;GE556-1
+;GE556-2
+;GE556-3
+;C02
+;C0201
+;C0202
+;C0203
+;R500-2
+;R500
+;R583
+;R588R
+;R588Z
+;C03
+;C0301
+;C0302
+;C0303
+;R251D
+;G213SP
+;P790-2
+;R792
+;R795V
+;C04
+;C0401
+;C0402
+;C0403
+;R179
+;R178R
+;C05
+;C0501
+;C0502
+;KTD
+;GS550
+;K377
+;P50
+;R182
+;R586S
+;VES-2
+
 
 # Insert Category Structure
 INSERT_UPDATE CategoryCategoryRelation;$categories;$supercategories
- ;100;1
- ;200;1
- ;210;200
- ;220;200
+;C0101		;C01
+;C0102		;C01
+;C0103		;C01
+;GE556		;C0103
+;GE556-1	;C0103
+;GE556-2	;C0103
+;GE556-3	;C0103
+;C0201		;C02
+;C0202		;C02
+;C0203		;C02
+;R500-2		;C0203
+;R500		;C0203
+;R583		;C0203
+;R588R		;C0203
+;R588Z		;C0203
+;C0301		;C03
+;C0302		;C03
+;C0303		;C03
+;R251D		;C0303
+;G213SP		;C0303
+;P790-2		;C0303
+;R792		;C0303
+;R795V		;C0303
+;C0401		;C04
+;C0402		;C04
+;C0403		;C04
+;R179		;C0403
+;R178R		;C0403
+;C0501		;C05
+;C0502		;C05
+;KTD		;C0502
+;GS550		;C0502
+;K377		;C0502
+;P50		;C0502
+;R182		;C0502
+;R586S		;C0502
+;VES-2		;C0502
+
