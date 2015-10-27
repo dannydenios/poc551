@@ -1,0 +1,648 @@
+# ImpEx for Importing CMS Mobile Content
+
+# Macros / Replacement Parameter definitions
+$contentCatalog=giacominiContentCatalog
+$contentCatalogName=giacomini Content Catalog
+$productCatalog=giacominiProductCatalog
+$productCatalogName=giacomini Product Catalog
+
+##############VARIABLES#####################################
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$productCV=catalogVersion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+$picture=media(code, $contentCV);
+$image=image(code, $contentCV);
+$media=media(code, $contentCV);
+$page=page(uid, $contentCV);
+$contentPage=contentPage(uid, $contentCV);
+$siteResource=jar:com.giacomini.constants.GiacominiConstants&/giacomini/import/sampledata/contentCatalogs/$contentCatalog
+$productResource=jar:com.giacomini.constants.GiacominiConstants&/giacomini/import/sampledata/productCatalogs/$productCatalog
+$jarResourceCms=jar:com.giacomini.constants.GiacominiConstants&/giacomini/import/sampledata/cockpits/cmscockpit
+#################################################################
+
+
+# CMS Site Settings
+UPDATE CMSSite;uid[unique=true];defaultPreviewCategory(code, $productCV);defaultPreviewProduct(code, $productCV)
+                                                   ; giacomini                     ; 100                                                  ; 0007
+# Site Logo
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];altText;folder(qualifier)[default='images']
+;;/images/theme/logo-hybris.png;logo-hybris.png;$siteResource/images/theme/logo-hybris.png;image/png;hybris Accelerator
+;;/images/theme/mobilelogo-hybris.png;mobilelogo-hybris.png;$siteResource/images/theme/mobilelogo-hybris.png;image/png;Mobile Hybris Accelerator
+
+
+# Site Logo Component
+INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;urlLink
+;;MobileLogoBannerComponent;MobileSite Logo Banner Component;MobileLogoBannerComponent;"/"
+
+INSERT_UPDATE LogoComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;logo(&componentRef)
+;;MobileSiteLogoComponent;MobileSite Logo Component;MobileSiteLogoComponent;MobileLogoBannerComponent
+
+# CMS Link Components
+INSERT_UPDATE CMSLinkComponent;$contentCV[unique=true];uid[unique=true];name;url;&linkRef;&componentRef;target(code)[default='sameWindow'];styleAttributes
+;;MobileHomepageNavLink;Mobile Home Page Nav Link;"/";MobileHomepageNavLink;MobileHomepageNavLink;;;;
+;;MobileAccountLink;Account Link;"/my-account";MobileAccountLink;MobileAccountLink;;
+;;MobileStoresLink;Store Finder;"/store-finder";MobileStoresLink;MobileStoresLink;;
+;;MobileHomeFooterLink;Home Footer Link;"/";MobileHomeFooterLink;MobileHomeFooterLink;;data-icon="custom ui-icon-custom-home" data-transition="slide"
+;;MobileStoreFooterLink;Store Footer Link;"/store-finder";MobileStoreFooterLink;MobileStoreFooterLink;;data-icon="custom ui-icon-custom-stores" data-transition="slidedown"
+;;MobileCartFooterLink;Cart Footer Link;"/cart";MobileCartFooterLink;MobileCartFooterLink;;data-icon="custom ui-icon-custom-cart" data-transition="slidedown"
+;;MobileConnectFooterLink;Connect Footer Link;"#";MobileConnectFooterLink;MobileConnectFooterLink;;id="connect-button" data-icon="custom ui-icon-custom-connect"
+;;MobileAccountProfileLink;Account Profile Link;"/my-account/profile";MobileAccountProfileLink;MobileAccountProfileLink;;;;
+;;MobileAccountAddressBookLink;Account Address Book Link;"/my-account/address-book";MobileAccountAddressBookLink;MobileAccountAddressBookLink;;;;
+;;MobileAccountPaymentDetailsLink;Account Payment Details Link;"/my-account/payment-details";MobileAccountPaymentDetailsLink;MobileAccountPaymentDetailsLink;;;;
+;;MobileAccountOrderHistoryLink;Account Order History Link;"/my-account/orders";MobileAccountOrderHistoryLink;MobileAccountOrderHistoryLink;;;;
+
+
+# Lightbox Banner for Mini Cart
+INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;urlLink
+;;MobileLightboxHomeDeliveryBannerComponent;Lightbox Home Delivery Banner Component;MobileLightboxHomeDeliveryBannerComponent;
+
+# CMS Mini Cart Component
+INSERT_UPDATE MiniCartComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;totalDisplay(code);shownProductCount;lightboxBannerComponent(&componentRef)
+;;MobileMiniCart;Mobile Mini Cart;MobileMiniCart;SUBTOTAL;3;MobileLightboxHomeDeliveryBannerComponent
+
+# Navigation Bar Component
+INSERT_UPDATE NavigationBarComponent;$contentCV[unique=true];uid[unique=true];name;wrapAfter;link(uid, $contentCV);styleClass;&componentRef
+;;MobileVitaminsBarComponent;Vitamins Bar Component;10;StuffCategoryLink;;MobileVitaminsBarComponent
+;;MobileCosmeticsBarComponent;Cosmetics Bar Component;10;ClothesCategoryLink;;MobileCosmeticsBarComponent
+
+# Navigation Bar Component
+INSERT_UPDATE AccountNavigationComponent;$contentCV[unique=true];uid[unique=true];name;navigationNode(&nodeRef);styleClass;&componentRef
+;;MobileAccountHomeComponent;Account Home Navigation Component;MobileAccountHomeNavNode;;MobileAccountHomeComponent
+
+# Account Navigation Bar Component
+INSERT_UPDATE AccountNavigationComponent;$contentCV[unique=true];uid[unique=true];name;navigationNode(&nodeRef);styleClass;&componentRef
+
+# CMS Language and Currency Component
+INSERT_UPDATE LanguageCurrencyComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+;;MobileLangCurrencyComponent;Language and Currency Component;MobileLangCurrencyComponent
+
+INSERT_UPDATE StoreFinderComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+;;MobileStoreFinderComponent;Store Finder Component;MobileStoreFinderComponent
+
+INSERT_UPDATE AccountControlComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+;;MobileAccountControlComponent;Account Profile Component;MobileAccountControlComponent
+
+INSERT_UPDATE CMSProductListComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+;;MobileProductList;Mobile Product List Component;MobileProductList
+
+INSERT_UPDATE ProductGridComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+;;MobileProductGrid;Mobile Product Grid Component;MobileProductGrid
+
+INSERT_UPDATE SearchResultsListComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+;;MobileSearchResultsList;Mobile Product List Component;MobileSearchResultsList
+
+INSERT_UPDATE SearchResultsGridComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+;;MobileSearchResultsGrid;Mobile Product Grid Component;MobileSearchResultsGrid
+
+# CMS tabs components
+INSERT_UPDATE CMSTabParagraphComponent;$contentCV[unique=true];uid[unique=true];name;visible;&componentRef
+;;MobiledeliveryTab;Delivery tab;true;MobiledeliveryTab
+
+INSERT_UPDATE CMSTabParagraphContainer;$contentCV[unique=true];uid[unique=true];name;visible;simpleCMSComponents(uid, $contentCV);&componentRef
+;;MobileTabPanelContainer;Tab container;true;MobiledeliveryTab;MobileTabPanelContainer
+
+# CMS Footer Component
+INSERT_UPDATE FooterComponent;$contentCV[unique=true];uid[unique=true];wrapAfter;&componentRef
+;;MobileFooterComponent;2;MobileFooterComponent
+;;MobileNavContent;2;MobileNavContent
+
+# CMS Paragraph Component (Contact information)
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+;;MobileContactInfo;Contact information;MobileContactInfo
+
+# CMS SubCategoryList Component
+INSERT_UPDATE SubCategoryListComponent;$contentCV[unique=true];uid[unique=true];&componentRef
+;;MobileSubCategoryListComponent;SubCategoryListComponent
+
+# CMS ProductReferences Components
+INSERT_UPDATE ProductReferencesComponent;$contentCV[unique=true];uid[unique=true];name;productReferenceTypes(code);maximumNumberProducts;&componentRef
+;;MobileAccessories;Accessories;ACCESSORIES;5;MobileAccessories
+;;MobileCrossSelling;Cross Selling;CROSSELLING;5;MobileCrossSelling
+;;MobileOthers;MobileOthers;OTHERS;5;MobileOthers
+;;MobileSimilar;MobileSimilar;SIMILAR;5;MobileSimilar
+
+# CMS ProductAddToCart Components
+INSERT_UPDATE ProductAddToCartComponent;$contentCV[unique=true];uid[unique=true];name;actions(&actionRef);&componentRef
+;;MobileAddToCart;Mobile Product Add To Cart;MobilePickUpInStoreAction,MobileAddToCartAction,MobileShareOnSocialNetworkAction;MobileAddToCart
+
+# CMS VariantSelector Components
+INSERT_UPDATE ProductVariantSelectorComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+;;MobileVariantSelector;Mobile Product Variant Selector;MobileVariantSelector
+
+# CMS CartSuggestion Components
+INSERT_UPDATE CartSuggestionComponent;$contentCV[unique=true];uid[unique=true];name;productReferenceTypes(code);maximumNumberProducts;filterPurchased;&componentRef
+;;MobileCartSuggestions;Mobile Cart Suggestions;ACCESSORIES,SIMILAR;20;true;MobileCartSuggestions
+
+# CMS SearchBox Components
+INSERT_UPDATE SearchBoxComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+;;MobileSearchBox;Mobile Search Box;MobileSearchBox
+
+# CMS AddToCart Action
+INSERT_UPDATE AddToCartAction;$contentCV[unique=true];uid[unique=true];url;name;restrictions(uid,$contentCV);&actionRef
+;;MobileAddToCartAction;/cart/add;Mobile Product Add To Cart Action;MobileActionRestriction;MobileAddToCartAction
+
+# CMS PickUpInStoreAction Action
+INSERT_UPDATE PickUpInStoreAction;$contentCV[unique=true];uid[unique=true];url;name;restrictions(uid,$contentCV);&actionRef
+;;MobilePickUpInStoreAction;/store-pickup/{productCode}/pointOfServices;Mobile Pickup in Store Action;MobileActionRestriction;MobilePickUpInStoreAction
+
+# CMS ShareOnSocialNetwork Action
+INSERT_UPDATE ShareOnSocialNetworkAction;$contentCV[unique=true];uid[unique=true];url;name;restrictions(uid,$contentCV);&actionRef
+;;MobileShareOnSocialNetworkAction;/;MobileShare On Social Network Action;MobileActionRestriction;MobileShareOnSocialNetworkAction
+
+# CMS Action Restrictions
+INSERT_UPDATE CMSActionRestriction;$contentCV[unique=true];uid[unique=true];name;
+;;MobileActionRestriction;A Mobile CMSAction restriction;
+
+# Content Slots
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];cmsComponents(uid, $contentCV)
+;;MobileHomepageNavLinkSlot;HomepageNavLink
+;;MobileNavigationBarSlot;MobileCosmeticsBarComponent,MobileVitaminsBarComponent
+;;MobileTabsSlot;MobileTabPanelContainer
+;;MobileFooterSlot;MobileFooterComponent
+;;MobileHeaderLinksSlot;MobileContactInfo
+;;MobileAddToCartSlot;MobileAddToCart
+;;MobileVariantSelectorSlot;MobileVariantSelector
+;;MobileUpSellingSlot;MobileSimilar
+;;MobileCrossSellingSlot;MobileAccessories
+;;MobileNavContentSlot;MobileNavContent
+;;MobileNavigationSlot;MobileNavBarComponent,MobileLangCurrencyComponent,MobileStoreFinderComponent,MobileAccountControlComponent,MobileMiniCart
+;;MobileBottomHeaderSlot;MobileSiteLogoComponent,MobileSearchBox,MobileBreadcrumbComponent
+;;MobileTopRegisterSlot;MobileRegisterBackComponent
+
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];mime;realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true];folder(qualifier)[default='images']
+;;MobileVitaminsPagePreview;text/png;CamerasPage.png;$jarResourceCms/preview-images/electronics/MobileCamerasPage.png
+;;MobileCosmeticsPagePreview;text/png;DigitalCamerasPage.png;$jarResourceCms/preview-images/electronics/MobileDigitalCamerasPage.png
+
+# Category Page Restrictions
+INSERT_UPDATE CMSCategoryRestriction;$contentCV[unique=true];uid[unique=true];name;categories(code, $productCV)
+;;MobileVitamins-LandingPageRestriction;Restriction for Vitamins page;100
+;;MobileCosmetics-LandingPageRestriction;Restriction for Cosmetics page;200
+
+# Category Pages
+INSERT_UPDATE CategoryPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);defaultPage;approvalStatus(code)[default='approved'];previewImage(code, $contentCV);restrictions(uid,$contentCV)[default='MobileExperienceRestriction'];onlyOneRestrictionMustApply[default='false']
+;;mobile-Vitamins;Vitamins;MobileProductListPageTemplate;false;;MobileVitaminsPagePreview;MobileExperienceRestriction,MobileVitamins-LandingPageRestriction
+;;mobile-Cosmetics;Cosmetics;MobileProductListPageTemplate;false;;MobileCosmeticsPagePreview;MobileExperienceRestriction,MobileCosmetics-LandingPageRestriction
+
+# CMS Navigation Nodes #
+INSERT_UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;children(uid,$contentCV)[mode=append]
+;root;;root;;
+
+# CMS Navigation Nodes
+INSERT_UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);links(uid, $contentCV);&nodeRef
+;MobileSiteRootNode;;MobileSiteRootNode;root;;MobileSiteRootNode
+;MobileMerchandiseNavNode;;hybris Merchandise Site;MobileSiteRootNode;MobileHomepageNavLink;MobileMerchandiseNavNode
+;MobileCosmeticsNavNode;;Cosmetics Category;MobileMerchandiseNavNode;StuffCategoryLink;MobileCosmeticsNavNode
+;MobileVitaminsNavNode;;Vitamins Category;MobileMerchandiseNavNode;ClothesCategoryLink;MobileVitaminsNavNode
+;MobileAcceleratorNavNode;;Accelerator Pages;MobileMerchandiseNavNode;AboutAcceleratorLink,DocumentationLink;MobileAcceleratorNavNode
+;MobileHybrisNavNode;;Hybris Pages;MobileMerchandiseNavNode;AboutHybrisLink,ContactUsLink;MobileHybrisNavNode
+;MobileFollowUsNavNode;;Follow Us;MobileMerchandiseNavNode;TwitterLink,FAQLink;MobileFollowUsNavNode
+;MobileAccountNavNode;;Account;MobileMerchandiseNavNode;MobileAccountLink,MobileStoresLink;MobileAccountNavNode
+;MobileAccountHomeNavNode;;My Account;MobileMerchandiseNavNode;MobileAccountProfileLink,MobileAccountAddressBookLink,MobileAccountPaymentDetailsLink,MobileAccountOrderHistoryLink;MobileAccountHomeNavNode
+;MobileFooterNavNode;;MobileFooter;MobileMerchandiseNavNode;MobileHomeFooterLink,MobileStoreFooterLink,MobileCartFooterLink,MobileConnectFooterLink;MobileFooterNavNode
+
+# Navigation Bar Component
+INSERT_UPDATE NavigationBarComponent;$contentCV[unique=true];uid[unique=true];navigationNode(&nodeRef);dropDownLayout(code);
+;;MobileVitaminsBarComponent;MobileVitaminsNavNode
+;;MobileCosmeticsBarComponent;MobileCosmeticsNavNode
+
+# Update CMS Footer Component with Nav Nodes
+INSERT_UPDATE FooterComponent;$contentCV[unique=true];uid[unique=true];navigationNodes(&nodeRef)
+;;MobileFooterComponent;MobileFooterNavNode
+;;MobileNavContent;MobileFollowUsNavNode
+
+# Preview Image for use in the CMS Cockpit for special ContentPages
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];mime;realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator][forceWrite=true];folder(qualifier)[default='images']
+;;MobileaccountPagePreview;text/png;AccountPage.png;$jarResourceCms/preview-images/electronics/MobileAccountPage.png
+;;MobileaddEditAddressPagePreview;text/png;AddEditAddressPage.png;$jarResourceCms/preview-images/electronics/MobileAddEditAddressPage.png
+;;MobileaddressBookPagePreview;text/png;AddressBook.png;$jarResourceCms/preview-images/electronics/MobileAddressBookPage.png
+;;MobilecartPagePreview;text/png;CartPage.png;$jarResourceCms/preview-images/electronics/MobileCartPage.png
+;;MobileCheckoutLoginPagePreview;text/png;CheckoutLoginPage.png;$jarResourceCms/preview-images/electronics/MobileCheckoutLoginPage.png
+;;MobilecheckoutSummaryPagePreview;text/png;CheckoutSummaryPage.png;$jarResourceCms/preview-images/electronics/MobileCheckoutSummaryPage.png
+;;MobilehomepagePreview;text/png;Homepage.png;$jarResourceCms/preview-images/electronics/MobileHomepage.png
+;;MobileloginPagePreview;text/png;LoginPage.png;$jarResourceCms/preview-images/electronics/MobileLoginPage.png
+;;MobilenotFoundPagePreview;text/png;NotFoundPage.png;$jarResourceCms/preview-images/electronics/MobileNotFoundPage.png
+;;MobileorderConfirmationPagePreview;text/png;OrderConfirmationPage.png;$jarResourceCms/preview-images/electronics/MobileOrderConfirmationPage.png
+;;MobileorderDetailsPagePreview;text/png;OrderDetailsPage.png;$jarResourceCms/preview-images/electronics/MobileOrderDetailsPage.png
+;;MobileorderHistoryPagePreview;text/png;OrderHistoryPage.png;$jarResourceCms/preview-images/electronics/MobileOrderHistoryPage.png
+;;MobilepaymentDetailsPagePreview;text/png;PaymentDetailsPage.png;$jarResourceCms/preview-images/electronics/MobilePaymentDetailsPage.png
+;;MobileproductDetailsPagePreview;text/png;ProductDetailsPage.png;$jarResourceCms/preview-images/electronics/MobileProductDetailsPage.png
+;;MobileproductListPagePreview;text/png;ProductListPage.png;$jarResourceCms/preview-images/electronics/MobileProductListPage.png
+;;MobileprofilePagePreview;text/png;ProfilePage.png;$jarResourceCms/preview-images/electronics/MobileProfilePage.png
+;;MobilesearchResultsEmptyPagePreview;text/png;SearchResultsEmptyPage.png;$jarResourceCms/preview-images/electronics/MobileSearchResultsEmptyPage.png
+;;MobilesearchResultsPagePreview;text/png;SearchResultsPage.png;$jarResourceCms/preview-images/electronics/MobileSearchResultsPage.png
+;;MobilestorefinderPagePreview;text/png;StoreFinderPage.png;$jarResourceCms/preview-images/electronics/MobileStoreFinderPage.png
+;;MobileupdateForgottenPasswordPagePreview;text/png;UpdateForgottenPasswordPage.png;$jarResourceCms/preview-images/electronics/MobileUpdateForgottenPasswordPage.png
+;;MobileproductGridPagePreview;text/png;ProductGridPage.png;$jarResourceCms/preview-images/electronics/MobileProductListPage.png
+;;MobiledefaultCategoryPagePreview;text/png;DefaultCategoryPage.png;$jarResourceCms/preview-images/electronics/MobileDefaultCategoryPage.png
+;;MobilefrequentlyAskedQuestionsPagePreview;text/png;FrequentlyAskedQuestionsPage.png;$jarResourceCms/preview-images/electronics/MobileFrequentlyAskedQuestionsPage.png;;;
+;;MobiletermsAndConditionsPagePreview;text/png;MobileTermsAndConditionsPage.png;$jarResourceCms/preview-images/electronics/MobileTermsAndConditionsPage.png;;;
+
+# Site-wide Homepage
+UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];previewImage(code, $contentCV)
+;;mobile-homepage;MobilehomepagePreview
+
+# Functional Content Pages
+;;mobile-multiStepCheckoutSummaryPage;MobilecheckoutSummaryPagePreview
+;;mobile-orderConfirmationPage;MobileorderConfirmationPagePreview
+;;mobile-cartPage;MobilecartPagePreview
+;;mobile-search;MobilesearchResultsPagePreview
+;;mobile-account;MobileaccountPagePreview
+;;mobile-profile;MobileprofilePagePreview
+;;mobile-address-book;MobileaddressBookPagePreview
+;;mobile-add-edit-address;MobileaddEditAddressPagePreview
+;;mobile-payment-details;MobilepaymentDetailsPagePreview
+;;mobile-order;MobileorderDetailsPagePreview
+;;mobile-orders;MobileorderHistoryPagePreview
+;;mobile-storefinderPage;MobilestorefinderPagePreview
+;;mobile-checkout-login;MobileCheckoutLoginPagePreview
+;;mobile-login;MobileloginPagePreview
+;;mobile-notFound;MobilenotFoundPagePreview
+;;mobile-searchEmpty;MobilesearchResultsEmptyPagePreview
+;;mobile-updatePassword;MobileupdateForgottenPasswordPagePreview
+;;mobile-faq;MobilefrequentlyAskedQuestionsPagePreview
+;;mobile-termsAndConditions;MobiletermsAndConditionsPagePreview
+
+# Product Details Page
+UPDATE ProductPage;$contentCV[unique=true];uid[unique=true];previewImage(code, $contentCV)
+;;mobile-productDetails;MobileproductDetailsPagePreview
+
+# Category Pages
+UPDATE CategoryPage;$contentCV[unique=true];uid[unique=true];previewImage(code, $contentCV)
+;;mobile-productList;MobileproductListPagePreview
+;;mobile-productGrid;MobileproductGridPagePreview
+;;mobile-category;MobiledefaultCategoryPagePreview
+
+###### Homepage ######
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];altText;&imageRef;folder(qualifier)[default='images']
+
+INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;urlLink
+;;MobileSimpleCarouselCyberBanner;Simple Carousel cyber Banner;MobileSimpleCarouselCyberBanner;/Open-Catalogue/Vitamins
+;;MobileSimpleCarouselFunBanner;Simple Carousel Fun Banner;MobileSimpleCarouselFunBanner;/Open-Catalogue/Cosmetics
+
+INSERT_UPDATE BannerComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;urlLink
+;;MobileCarouselCyberBanner;Carousel Cyber Banner;MobileCarouselCyberBanner;/Open-Catalogue/Vitamins
+;;MobileCarouselFunBanner;Carousel Fun Banner;MobileCarouselFunBanner;/Open-Catalogue/Cosmetics
+
+INSERT_UPDATE RotatingImagesComponent;$contentCV[unique=true];uid[unique=true];name;banners(&componentRef);&componentRef
+;;MobileMerchandiseHomepageCarouselComponent;Merchandise Homepage Carousel;MobileCarouselCyberBanner,MobileCarouselFunBanner;MobileMerchandiseHomepageCarouselComponent
+
+INSERT_UPDATE ProductFeatureComponent;$contentCV[unique=true];uid[unique=true];name;product(code,$productCV);&componentRef
+;;MobileMaaloxFeatureComponent;MobileMaaloxFeatureComponent;0002;MobileMaaloxFeatureComponent
+;;MobileMomentFeatureComponent;MobileMomentFeatureComponent;0007;MobileMomentFeatureComponent
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
+#;;SiteLogoSlot-MobileHomepage;SiteLogo Slot for Homepage;true;MobileSiteLogoComponent
+#;;NavigationBarSlot-MobileHomepage;NavigationBar Slot for Homepage;true;MobileHomepageNavLink
+;;MobileSection1Slot-Homepage;Section1 Slot for Homepage;true;MobileMerchandiseHomepageCarouselComponent
+;;MobileSection4Slot-Homepage;Section4 Slot for Homepage;true;MobileMaaloxFeatureComponent,MobileMomentFeatureComponent
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='mobile-homepage'];contentSlot(uid,$contentCV)[unique=true]
+#;;SiteLogo-MobileHomepage;SiteLogo;;SiteLogoSlot-MobileHomepage
+#;;NavigationBar-MobileHomepage;NavigationBar;;NavigationBarSlot-MobileHomepage
+;;MobileSection1-Homepage;Section1;;MobileSection1Slot-Homepage
+;;MobileSection4-Homepage;Section4;;MobileSection4Slot-Homepage
+
+                                                   
+###### FAQ Page ######
+
+# CMS Paragraph Component (Contact information)
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+;;MobilefaqMenuParagraph;FAQ Paragraph;MobileFAQMenuParagraph
+;;MobilefaqTextParagraph;Mobile FAQ Paragraph;MobileFAQTextParagraph
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
+;;MobileSection2ASlot-FAQ;Mobile Section2A Slot for FAQ Page;true;MobileFAQMenuParagraph
+;;MobileSection2BSlot-FAQ;Mobile Section2B Slot for FAQ Page;true;MobileFAQTextParagraph
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='mobile-faq'];contentSlot(uid,$contentCV)[unique=true]
+;;MobileSection2A-FAQ;Section2A;;MobileSection2ASlot-FAQ
+;;MobileSection2B-FAQ;Section2B;;MobileSection2BSlot-FAQ
+
+###### Terms And Conditions Page ######
+
+# CMS Paragraph Component (Contact information)
+
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;;;;
+;;MobiletermsAndConditionsMenuParagraph;Mobile Terms and Conditions Paragraph;MobileTermsAndConditionsMenuParagraph;;;;
+;;MobiletermsAndConditionsTextParagraph;Mobile Terms and Conditions Paragraph;MobileTermsAndConditionsTextParagraph;;;;
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;MobileSection2ASlot-TermsAndConditions;Mobile Section2A Slot for Terms and Conditions Page;true;MobileTermsAndConditionsMenuParagraph;;;
+;;MobileSection2BSlot-TermsAndConditions;Mobile Section2B Slot for Terms and Conditions Page;true;MobileTermsAndConditionsTextParagraph;;;
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='mobile-termsAndConditions'];contentSlot(uid,$contentCV)[unique=true];;;
+;;MobileSection2A-TermsAndConditions;Section2A;;MobileSection2ASlot-TermsAndConditions;;;
+;;MobileSection2B-TermsAndConditions;Section2B;;MobileSection2BSlot-TermsAndConditions;;;
+
+###### Camera Accessories and Supplies Category Landing Page ######
+
+INSERT_UPDATE CMSCategoryRestriction;$contentCV[unique=true];uid[unique=true];name;categories(code, $productCV)
+
+INSERT_UPDATE CategoryPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);defaultPage;approvalStatus(code)[default='approved'];previewImage(code, $contentCV);restrictions(uid,$contentCV)[default='MobileExperienceRestriction'];onlyOneRestrictionMustApply[default='false']
+
+INSERT_UPDATE CategoryFeatureComponent;$contentCV[unique=true];uid[unique=true];name;category(code, $productCV);&componentRef
+
+INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='mobile-CamerasAccessoriesAndSuppliesCategoryPage'];contentSlot(uid,$contentCV)[unique=true]
+
+###### Search Results Page ######
+
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+;;MobileNoSearchResultsParagraphComponent;No Search Results Paragraph Component;MobileNoSearchResultsParagraphComponent
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
+;;MobileTopContent-searchEmpty;Top Slot for searchEmpty;true;
+;;MobileMiddleContent-searchEmpty;Middle Slot for searchEmpty;true;MobileNoSearchResultsParagraphComponent
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='mobile-searchEmpty'];contentSlot(uid,$contentCV)[unique=true]
+;;MobileTop-searchEmpty;TopContent;;MobileTopContent-searchEmpty
+;;MobileMiddle-searchEmpty;MiddleContent;;MobileMiddleContent-searchEmpty
+
+###### Cart Page ######
+
+INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+;;MobileEmptyCartParagraphComponent;Empty Cart Paragraph Component;MobileEmptyCartParagraphComponent
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
+;;MobileEmptyCartMiddleContent-cartPage;Empty Cart Middle Slot for Cart Page;true;MobileEmptyCartParagraphComponent
+;;MobileTopContentSlot-cartPage;Top Content Slot for Cart Page;true;MobileCartComponent,MobileCartTotalsComponent,MobileCheckoutComponent,MobilePromotionsComponent,MobilePotentialPromotionsComponent,MobileCartSuggestions
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='mobile-cartPage'];contentSlot(uid,$contentCV)[unique=true]
+;;MobileEmptyCartMiddleForCartPage;EmptyCartMiddleContent;;MobileEmptyCartMiddleContent-cartPage
+;;MobileTopContentSlotForCartPage;TopContentSlot;;MobileTopContentSlot-cartPage
+
+############Camcorder Category Banner###############
+INSERT_UPDATE CMSCategoryRestriction;$contentCV[unique=true];uid[unique=true];name;categories(code, $productCV)
+
+INSERT_UPDATE CategoryPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);defaultPage;approvalStatus(code)[default='approved'];previewImage(code, $contentCV);restrictions(uid,$contentCV)[default='MobileExperienceRestriction'];onlyOneRestrictionMustApply[default='false']
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='mobile-CamcorderCategoryPage'];contentSlot(uid,$contentCV)[unique=true]
+
+##############################################################
+
+
+############Cosmetics Category Banner###############
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
+;;MobileSection2Slot-CosmeticsCategoryPage;Section2 slot for Cosmetics page;true;MobileSimpleCarouselCyberBanner
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='mobile-Cosmetics'];contentSlot(uid,$contentCV)[unique=true]
+;;MobileSection2-CosmeticsCategoryPage;Section2;;MobileSection2Slot-CosmeticsCategoryPage
+##############################################################
+
+
+##############Cameras Category Banner###########################
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
+;;MobileSection2Slot-VitaminsCategoryPage;Section2 slot for Vitamins category page;true;MobileSimpleCarouselFunBanner
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='mobile-Vitamins'];contentSlot(uid,$contentCV)[unique=true]
+;;MobileSection2-VitaminsCategoryPage;Section2;;MobileSection2Slot-VitaminsCategoryPage
+##########################################################################
+
+
+####################Store finder Digital Compacts Banner###########
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='mobile-storefinderPage'];contentSlot(uid,$contentCV)[unique=true]
+
+####################################################################
+
+#################### My account online save Banner###########
+# ContentSlot
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;MobileBodyContent-Account;Body Content Slot for Mobile My Account Homepage;true;MobileAccountHomeComponent;;;
+
+# ContentSlotForPage
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='mobile-account'];contentSlot(uid,$contentCV)[unique=true];;;
+;;MobileBodyContent-Account;BodyContent;;MobileBodyContent-Account;;;
+####################################################################
+
+
+############Digital Compacts Category###############
+INSERT_UPDATE CMSCategoryRestriction;$contentCV[unique=true];uid[unique=true];name;categories(code, $productCV)
+
+INSERT_UPDATE CategoryPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);defaultPage;approvalStatus(code)[default='approved'];previewImage(code, $contentCV);restrictions(uid,$contentCV)[default='MobileExperienceRestriction'];onlyOneRestrictionMustApply[default='false']
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='mobile-DigitalCompactsCategoryPage'];contentSlot(uid,$contentCV)[unique=true]
+##############################################################
+
+
+############Lens Banner###############
+INSERT_UPDATE CMSCategoryRestriction;$contentCV[unique=true];uid[unique=true];name;categories(code, $productCV)
+
+INSERT_UPDATE CategoryPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);defaultPage;approvalStatus(code)[default='approved'];previewImage(code, $contentCV);restrictions(uid,$contentCV)[default='MobileExperienceRestriction'];onlyOneRestrictionMustApply[default='false']
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='mobile-LensCategoryPage'];contentSlot(uid,$contentCV)[unique=true]
+##############################################################
+
+
+############SubCategoryList Component for Product List Page###############
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
+;;MobileSection3Slot-productList;Section3 slot for Product List Page;true;SubCategoryListComponent
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='mobile-productList'];contentSlot(uid,$contentCV)[unique=true]
+;;MobileSection3-productList;Section3;;MobileSection3Slot-productList
+####################################################################
+
+
+############SubCategoryList Component for Product Grid Page###############
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef)
+;;MobileSection3Slot-productGrid;Section3 slot for Product Grid Page;true;SubCategoryListComponent
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='mobile-productGrid'];contentSlot(uid,$contentCV)[unique=true]
+;;MobileSection3-productGrid;Section3;;MobileSection3Slot-productGrid
+####################################################################
+
+######  Account bookmark components
+
+INSERT_UPDATE AccountBookmarkComponent;$contentCV[unique=true];uid[unique=true];name;link(uid, $contentCV);&componentRef
+;;MobileAccountBookmarkComponent;Mobile Account bookmark component;MobileAccountLink;MobileAccountBookmarkComponent
+;;MobileOrderHistoryBookmarkComponent;Mobile Account Order History bookmark component;MobileAccountOrderHistoryLink;MobileOrderHistoryBookmarkComponent
+
+
+INSERT_UPDATE NavigationBarCollectionComponent;$contentCV[unique=true];uid[unique=true];name;components(uid, $contentCV);&componentRef
+;;MobileNavBarComponent;Mobile Navigation Bar Collection Component;MobileCosmeticsBarComponent,MobileVitaminsBarComponent;MobileNavBarComponent
+
+
+############Account Page Components and Slots############
+
+INSERT_UPDATE JspIncludeComponent;$contentCV[unique=true];uid[unique=true];name;page;&componentRef
+;;MobileAccountPaymentDetailsComponent;Account Payment Details page include component;accountPaymentInfoPage.jsp;MobileAccountPaymentDetailsComponent
+;;MobileAccountOrderDetailsHeadlineComponent;Account Order Details Headline;accountOrderDetailHeadline.jsp;MobileAccountOrderDetailsHeadlineComponent
+;;MobileAccountOrderDetailsTotalsComponent;Account Order Details Order Totals;accountOrderDetailOrderTotals.jsp;MobileAccountOrderDetailsTotalsComponent
+;;MobileAccountOrderDetailsShippingComponent;Account Order Details Shipping Info;accountOrderDetailShippingInfo.jsp;MobileAccountOrderDetailsShippingComponent
+;;MobileAccountOrderDetailsItemsComponent;Account Order Details Item Info;accountOrderDetailItems.jsp;MobileAccountOrderDetailsItemsComponent
+;;MobileAccountOrderHistoryComponent;Account Payment Details page include component;accountOrderHistoryPage.jsp;MobileAccountOrderHistoryComponent
+;;MobileAccountProfileComponent;Account Profile Component;accountProfilePage.jsp;MobileAccountProfileComponent
+;;MobileAccountAddressBookComponent;Account Address Book Component;accountAddressBookPage.jsp;MobileAccountAddressBookComponent
+;;MobileAccountAddEditAddressComponent;Account Add Edit Address Component;accountEditAddressPage.jsp;MobileAccountAddEditAddressComponent
+;;MobileUpdateProfileComponent;Account Update Profile Component;accountProfileEditPage.jsp;MobileUpdateProfileComponent
+;;MobileUpdateEmailComponent;Account Update Email Component;accountProfileEmailEditPage.jsp;MobileUpdateEmailComponent
+;;MobileUpdatePasswordComponent;Account Update Password Component;accountChangePasswordPage.jsp;MobileUpdatePasswordComponent
+;;MobileStoreFinderJspIncludeComponent;Mobile Store Finder Component;storeFinderContent.jsp;MobileStoreFinderJspIncludeComponent
+;;MobileCartComponent;Mobile Cart Display Component;cartDisplay.jsp;MobileCartComponent
+;;MobileCartTotalsComponent;Mobile Cart Totals Display Component;cartTotalsDisplay.jsp;MobileCartTotalsComponent
+;;MobilePromotionsComponent;Mobile Promotions Component;cartPromotionsDisplay.jsp;MobilePromotionsComponent
+;;MobilePotentialPromotionsComponent;Mobile Potential Promotions Component;potentialPromotionsDisplay.jsp;MobilePotentialPromotionsComponent
+;;MobileCheckoutComponent;Mobile Checkout Component;checkoutDisplay.jsp;MobileCheckoutComponent
+;;MobileReturningCustomerLoginComponent;Mobile Returning Customer Login Component;accountReturningCustomerLogin.jsp;MobileReturningCustomerLoginComponent;
+;;MobileReturningCustomerCheckoutLoginComponent;Mobile Returning Customer Checkout Login Component;checkoutReturningCustomerLogin.jsp;MobileReturningCustomerCheckoutLoginComponent;
+;;MobileGuestCheckoutLoginComponent;Mobile Guest Checkout Login Component;checkoutGuestLogin.jsp;MobileGuestCheckoutLoginComponent
+;;MobileAccountRegisterDisplayComponent;Mobile Account Register Display Component;accountRegisterDisplay.jsp;MobileAccountRegisterDisplayComponent
+;;MobileCheckoutRegisterDisplayComponent;Mobile Checkout Register Display Component;checkoutRegisterDisplay.jsp;MobileCheckoutRegisterDisplayComponent
+;;MobileRegisterBackComponent;Mobile Register Back Component;../misc/registerBackComponent.jsp;MobileRegisterBackComponent
+
+INSERT_UPDATE BreadcrumbComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef
+;;MobileBreadcrumbComponent;Breadcrumb CMS Component;MobileBreadcrumbComponent
+
+####################################################################
+
+######  Account payment detail page
+# ContentSlot
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;MobileTopContent-payment-details;Mobile Top Content Slot for My Account payment-details;true;MobileAccountBookmarkComponent;;;
+;;MobileBodyContent-payment-details;Mobile Body Content Slot for My Account payment-details;true;MobileAccountPaymentDetailsComponent;;;
+
+# ContentSlotForPage
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='mobile-payment-details'];contentSlot(uid,$contentCV)[unique=true];;;
+;;MobileTopContent-payment-details;TopContent;;MobileTopContent-payment-details;;;
+;;MobileBodyContent-payment-details;BodyContent;;MobileBodyContent-payment-details;;;
+
+######  Account Order History
+# ContentSlot
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;MobileTopContent-orders;Mobile Top Content Slot for My Account Order History;true;MobileAccountBookmarkComponent;;;
+;;MobileBodyContent-orders;Mobile Body Content Slot for My Account Order History;true;MobileAccountOrderHistoryComponent;;;
+
+# ContentSlotForPage
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='mobile-orders'];contentSlot(uid,$contentCV)[unique=true];;;
+;;MobileTopContent-orders;TopContent;;MobileTopContent-orders;;;
+;;MobileBodyContent-orders;BodyContent;;MobileBodyContent-orders;;;
+
+###### Account Profile
+# ContentSlot
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;MobileTopContent-profile;Mobile Top Content Slot for My Account Profile;true;MobileAccountBookmarkComponent;;;
+;;MobileBodyContent-profile;Mobile Body Content Slot for My Account Profile;true;MobileAccountProfileComponent;;;
+
+# ContentSlotForPage
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='mobile-profile'];contentSlot(uid,$contentCV)[unique=true];;;
+;;MobileTopContent-profile;TopContent;;MobileTopContent-profile;;;
+;;MobileBodyContent-profile;BodyContent;;MobileBodyContent-profile;;;
+
+###### Address Book 
+# ContentSlot
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;MobileTopContent-address-book;Mobile Top Content Slot for Address Book;true;MobileAccountBookmarkComponent;;;
+;;MobileBodyContent-address-book;Mobile Body Content Slot for Address Book;true;MobileAccountAddressBookComponent;;;
+
+# ContentSlotForPage
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='mobile-address-book'];contentSlot(uid,$contentCV)[unique=true];;;
+;;MobileTopContent-address-book;TopContent;;MobileTopContent-address-book;;;
+;;MobileBodyContent-address-book;BodyContent;;MobileBodyContent-address-book;;;
+
+###### Add Edit Address
+# ContentSlot
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;MobileTopContent-add-edit-address;Mobile Top Content Slot for Add Edit Address;true;MobileAccountBookmarkComponent;;;
+;;MobileBodyContent-add-edit-address;Mobile Body Content Slot for Add Edit Address;true;MobileAccountAddEditAddressComponent;;;
+
+# ContentSlotForPage
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='mobile-add-edit-address'];contentSlot(uid,$contentCV)[unique=true];;;
+;;MobileTopContent-add-edit-address;TopContent;;MobileTopContent-add-edit-address;;;
+;;MobileBodyContent-add-edit-address;BodyContent;;MobileBodyContent-add-edit-address;;;
+
+
+###### Update Profile
+# ContentSlot
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;MobileTopContent-update-profile;Mobile Top Content Slot for Update Profile;true;MobileAccountBookmarkComponent;;;
+;;MobileBodyContent-update-profile;Mobile Body Content Slot for Update Profile;true;MobileUpdateProfileComponent;;;
+
+# ContentSlotForPage
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='mobile-update-profile'];contentSlot(uid,$contentCV)[unique=true];;;
+;;MobileTopContent-update-profile;TopContent;;MobileTopContent-update-profile;;;
+;;MobileBodyContent-update-profile;BodyContent;;MobileBodyContent-update-profile;;;
+
+###### Update Email
+# ContentSlot
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;MobileTopContent-update-email;Mobile Top Content Slot for Update Email;true;MobileAccountBookmarkComponent;;;
+;;MobileBodyContent-update-email;Mobile Body Content Slot for Update Email;true;MobileUpdateEmailComponent;;;
+
+# ContentSlotForPage
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='mobile-update-email'];contentSlot(uid,$contentCV)[unique=true];;;
+;;MobileTopContent-update-email;TopContent;;MobileTopContent-update-email;;;
+;;MobileBodyContent-update-email;BodyContent;;MobileBodyContent-update-email;;;
+
+###### Update Password
+# ContentSlot
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;MobileTopContent-updatePassword;Mobile Top Content Slot for Update Password;true;MobileAccountBookmarkComponent;;;
+;;MobileBodyContent-updatePassword;Mobile Body Content Slot for Update Password;true;MobileUpdatePasswordComponent;;;
+
+# ContentSlotForPage
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='mobile-updatePassword'];contentSlot(uid,$contentCV)[unique=true];;;
+;;MobileTopContent-updatePassword;TopContent;;MobileTopContent-updatePassword;;;
+;;MobileBodyContent-updatePassword;BodyContent;;MobileBodyContent-updatePassword;;;
+
+###### Account Order Detail
+
+# ContentSlot
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;MobileTopContent-orderdetails;Mobile Top Content Slot for My Account Order Details;true;MobileOrderHistoryBookmarkComponent;;;
+;;MobileBodyContent-orderdetails;Mobile Body Content Slot for My Account Order Details;true;MobileAccountOrderDetailsTotalsComponent,MobileAccountOrderDetailsShippingComponent,MobileAccountOrderDetailsItemsComponent,MobileAccountOrderDetailsHeadlineComponent;;;
+
+# ContentSlotForPage
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='mobile-order'];contentSlot(uid,$contentCV)[unique=true];;;
+;;MobileTopContent-orderdetails;TopContent;;MobileTopContent-orderdetails;;;
+;;MobileBodyContent-orderdetails;BodyContent;;MobileBodyContent-orderdetails;;;
+
+
+###
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;MobileProductListSlot;Product List slot;true;MobileProductList;;;
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;MobileProductGridSlot;Product Grid slot;true;MobileProductGrid;;;
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;MobileSearchResultsListSlot;Search Results List slot;true;MobileSearchResultsList;;;
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;MobileSearchResultsGridSlot;Search Results Grid slot;true;MobileSearchResultsGrid;;;
+
+### Customer Login
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;MobileTopContentSlot-login;Mobile Top Content Slot for Customer Login;true;MobileReturningCustomerLoginComponent;;;
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='mobile-login'];contentSlot(uid,$contentCV)[unique=true];;;
+;;MobileTopContentSlot-login;TopContentSlot;;MobileTopContentSlot-login;;;
+
+### Customer Checkout Login
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;MobileTopContentSlot-checkout-login;Mobile Top Content Slot for Checkout Login;true;MobileReturningCustomerCheckoutLoginComponent;;;
+;;MobileBottomContentSlot-checkout-login;Mobile Bottom Content Slot for Checkout Login;true;MobileGuestCheckoutLoginComponent;;;
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='mobile-checkout-login'];contentSlot(uid,$contentCV)[unique=true];;;
+;;MobileTopContentSlot-checkout-login;TopContentSlot;;MobileTopContentSlot-checkout-login;;;
+;;MobileBottomContentSlot-checkout-login;BottomContentSlot;;MobileBottomContentSlot-checkout-login;;;
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;MobileBottomContentSlot-register;Mobile Bottom Content Slot for Account Register;true;MobileAccountRegisterDisplayComponent;;;
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='mobile-register'];contentSlot(uid,$contentCV)[unique=true];;;
+;;MobileBottomContentSlot-register;BottomContentSlot;;MobileBottomContentSlot-register;;;
+
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef);;;
+;;MobileBottomContentSlot-checkout-register;Mobile Bottom Content Slot for Checkout Register;true;MobileCheckoutRegisterDisplayComponent;;;
+
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='mobile-checkout-register'];contentSlot(uid,$contentCV)[unique=true];;;
+;;MobileBottomContentSlot-checkout-register;BottomContentSlot;;MobileBottomContentSlot-checkout-register;;;

@@ -1,0 +1,36 @@
+# ImpEx for Importing Products Stock Levels and Warehouses into Merchandise
+  
+# Macros / Replacement Parameter definitions
+$productCatalog=giacominiProductCatalog
+  
+$catalogVersion=catalogversion(catalog(id[default=$productCatalog]),version[default='Staged'])[unique=true,default=$productCatalog:Staged]
+  
+INSERT_UPDATE Vendor;code[unique=true]
+;giacomini;Giacomini;Giacomini
+  
+INSERT_UPDATE Warehouse;code[unique=true];vendor(code);default[default=true]
+;warehouse_c;giacomini;
+  
+INSERT_UPDATE StockLevel;available;warehouse(code)[unique=true];inStockStatus(code);maxPreOrder;maxStockLevelHistoryCount;overSelling;preOrder;productCode[unique=true];reserved
+;100;warehouse_c;forceInStock;0;-1;0;0;0001;0
+;100;warehouse_c;forceInStock;0;-1;0;0;0002;0
+;100;warehouse_c;forceInStock;0;-1;0;0;0004;0
+;100;warehouse_c;forceInStock;0;-1;0;0;0005;0
+;100;warehouse_c;forceInStock;0;-1;0;0;0006;0
+;100;warehouse_c;forceInStock;0;-1;0;0;0007;0
+;100;warehouse_c;notSpecified;0;-1;0;0;0100;0
+;100;warehouse_c;notSpecified;0;-1;0;0;0110;0
+;100;warehouse_c;notSpecified;0;-1;0;0;0200;0
+;100;warehouse_c;notSpecified;0;-1;0;0;0210;0
+  
+UPDATE Product;code[unique=true];$catalogVersion;stockLevels(productCode,warehouse(code));vendors(code)
+;0001;;0001:warehouse_c;giacomini
+;0002;;0002:warehouse_c;giacomini
+;0004;;0004:warehouse_c;giacomini
+;0005;;0005:warehouse_c;giacomini
+;0006;;0006:warehouse_c;giacomini
+;0007;;0007:warehouse_c;giacomini
+;0100;;0100:warehouse_c;giacomini
+;0110;;0110:warehouse_c;giacomini
+;0200;;0200:warehouse_c;giacomini
+;0210;;0210:warehouse_c;giacomini

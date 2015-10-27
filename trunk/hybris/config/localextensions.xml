@@ -92,6 +92,7 @@
 		<extension name="merchandiseinitialdata" />
 		
 		<extension name="newdemo" />
+		<extension name="giacomini" />
 		
 		<!-- 
 		<extension name="demostorefront" />
