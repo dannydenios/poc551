@@ -41,17 +41,18 @@ project-builder/hybris-modules/*.zip
 ##############################################################
 ####################### Other files ##########################
 
-hybris/bin/custom/**/build.xml
-hybris/bin/custom/**/extensioninfo.xsd
-hybris/bin/custom/**/hmc.xsd
-hybris/bin/custom/**/items.xsd
-hybris/bin/custom/**/platformhome.properties
+bin/custom/**/build.xml
+bin/custom/**/extensioninfo.xsd
+bin/custom/**/hmc.xsd
+bin/custom/**/items.xsd
+bin/custom/**/platformhome.properties
+bin/custom/merchandise/**/platformhome.properties
 
-hybris/bin/custom/**/resources/**/*-testclasses.xml
-hybris/bin/custom/**/resources/**/*-webtestclasses.xml
+bin/custom/**/resources/**/*-testclasses.xml
+bin/custom/**/resources/**/*-webtestclasses.xml
 
-hybris/bin/platform/tomcat/jrebel
-hybris/**/rebel.xml
+bin/platform/tomcat/jrebel
+**/rebel.xml
 
 **/.DS_Store
 
