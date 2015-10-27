@@ -4,7 +4,7 @@
 hybris/bin/ext-*
 hybris/bin/platform
 
-hybris/bin/**/hmc/bin/
+bin/**/hmc/bin/
 **/hmc/resources/hmc.xsd
 
 hybris/config/local.properties
@@ -46,7 +46,7 @@ bin/custom/**/extensioninfo.xsd
 bin/custom/**/hmc.xsd
 bin/custom/**/items.xsd
 bin/custom/**/platformhome.properties
-bin/custom/merchandise/**/platformhome.properties
+**/platformhome.properties
 
 bin/custom/**/resources/**/*-testclasses.xml
 bin/custom/**/resources/**/*-webtestclasses.xml

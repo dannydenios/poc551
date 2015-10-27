@@ -18,7 +18,7 @@
 
 										
 		<!-- ext-commerce -->
-        	<extension name="assistedservicefacades" />
+        <extension name="assistedservicefacades" />
 		<extension name="btg" />
 		<extension name="btgcockpit" />
 		<extension name="commercesearch" />
@@ -58,9 +58,9 @@
 		<extension name="mobileservices" />
 										
 		<!-- ext-addon -->
-		<extension name="addonsupport" />
 		<extension name="b2ccheckoutaddon" />
-        	<extension name="assistedservicestorefront" />
+		<extension name="addonsupport" />
+        <extension name="assistedservicestorefront" />
 
 
 		<!-- ext-template -->
@@ -93,9 +93,7 @@
 		
 		<extension name="newdemo" />
 		
-		<!--
-		<extension name="nicenewer" />
-		
+		<!-- 
 		<extension name="demostorefront" />
 		<extension name="democockpits" />
 		<extension name="democore" />
