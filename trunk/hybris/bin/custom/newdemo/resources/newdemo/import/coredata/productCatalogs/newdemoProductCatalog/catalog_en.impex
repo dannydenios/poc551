@@ -1,0 +1,10 @@
+#
+# Create the Merchandise Product Catalog
+#
+# ENGLISH LOCALIZATION
+#
+$lang=en
+$productCatalog=newdemoProductCatalog
+ 
+UPDATE Catalog;id[unique=true];name[lang=$lang]
+;$productCatalog;"newdemo Product Catalog"

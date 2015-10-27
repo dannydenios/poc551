@@ -1,0 +1,11 @@
+#
+# Create the Merchandise Product Catalog
+#
+# ENGLISH LOCALIZATION
+#
+$lang=en
+$productCatalog=hybrisProductCatalog
+ 
+UPDATE Catalog;id[unique=true];name[lang=$lang]
+;$productCatalog;"hybris Product Catalog"
+;newProductCatalog;"un nuovo catalogo"
