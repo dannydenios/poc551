@@ -2,7 +2,7 @@ $contentCatalog=giacominiContentCatalog
 $contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
 $picture=media(code, $contentCV);
 $wideContent=CMSImageComponent,BannerComponent
-$siteResource=jar:com.giacomini.setup.YdemoStoreSystemSetup&/giacomini/import/sampledata/contentCatalogs/$contentCatalog
+$siteResource=jar:com.giacomini.setup.GiacominiStoreSystemSetup&/giacomini/import/sampledata/contentCatalogs/$contentCatalog
    
 # Language
 $lang=en

@@ -14,8 +14,50 @@ UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[l
 # CMS Link Components
 UPDATE CMSLinkComponent;$contentCV[unique=true];uid[unique=true];linkName[lang=$lang]
 ;;HomepageNavLink;"Home"
-;;StuffCategoryLink;"Cosmetics"
-;;ClothesCategoryLink;"Vitamins"
+
+;;C01CategoryLink       ;"Contabilizzazione"
+;;C0101CategoryLink     ;"Contabilizzazione indiretta"
+;;C0102CategoryLink     ;"Moduli di utenza"
+;;C0103CategoryLink     ;"Satelliti di utenza"
+;;GE556CategoryLink     ;"standard"
+;;GE556-1CategoryLink   ;"con doppio scambiatore"
+;;GE556-2CategoryLink   ;"con regolazione elettronica"
+;;GE556-3CategoryLink   ;"per produzione acqua sanitaria"
+;;C02CategoryLink       ;"Sanitario"
+;;C0201CategoryLink     ;"Cassette premontate "
+;;C0202CategoryLink     ;"Accessori"
+;;C0203CategoryLink     ;"Cassette vuote"
+;;R500-2CategoryLink    ;"da incasso per collettori"
+;;R500CategoryLink      ;"da incasso per collettori - 2"
+;;R583CategoryLink      ;"Supporto collettori R580"
+;;R588RCategoryLink     ;"Supporto collettori in cassetta R557I"
+;;R588ZCategoryLink     ;"Supporto collettori R553D, R553F"
+;;C03CategoryLink       ;"Riscaldamento"
+;;C0301CategoryLink     ;"Rubinetti a sfera"
+;;C0302CategoryLink     ;"Valvole a sfera"
+;;C0303CategoryLink     ;"Valvole post contatore gas"
+;;R251DCategoryLink     ;"con attacchi F-F"
+;;G213SPCategoryLink    ;"impianti gas sottotraccia"
+;;P790-2CategoryLink    ;"Adattatore per presa di pressione"
+;;R792CategoryLink      ;"Valvola per presa di pressione"
+;;R795VCategoryLink     ;"Kit di collegamento per R790"
+;;C04CategoryLink       ;"Raccorderia"
+;;C0401CategoryLink     ;"Tubazione multistrato"
+;;C0402CategoryLink     ;"Raccordi a pressare serie RM"
+;;C0403CategoryLink     ;"Adattatori per tubi"
+;;R179CategoryLink      ;"Adattatori per tubi in plastica"
+;;R178RCategoryLink     ;"Raccordo - base in adattatore"
+;;C05CategoryLink       ;"Rinnovabili"
+;;C0501CategoryLink     ;"Impianti a biomassa"
+;;C0502CategoryLink     ;"Impianti solari termici"
+;;KTDCategoryLink       ;"Centralina differenziale"
+;;GS550CategoryLink     ;"Gruppo di controllo"
+;;K377CategoryLink      ;"Glicole antigelo propilenico"
+;;P50CategoryLink       ;"Kit raccordi"
+;;R182CategoryLink      ;"Raccordo a T per valvole"
+;;R586SCategoryLink     ;"Gruppo di circolazione"
+;;VES-2CategoryLink     ;"Staffa di fissaggio"
+
 ;;AboutAcceleratorLink;"About Commerce Accelerator"
 ;;AboutHybrisLink;"About hybris"
 ;;AccountAddressBookLink;"Address Book"
@@ -50,11 +92,11 @@ UPDATE CMSTabParagraphComponent;$contentCV[unique=true];uid[unique=true];title[l
   
 # CMS Footer Component
 UPDATE FooterComponent;$contentCV[unique=true];uid[unique=true];notice[lang=$lang]
-;;FooterComponent;© 2013 hybris software - hybris training
+;;FooterComponent;© 2015 giacomini - GIACOMINI
   
 # CMS Paragraph Component (Contact information)
 INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
-;;ContactInfo;"Call us: +49 (0)89 890 650 -220"
+;;ContactInfo;"Call us: +39 89 890 650 2200"
   
 # CMS ProductReferences Components
 UPDATE ProductReferencesComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
@@ -65,15 +107,97 @@ UPDATE ProductReferencesComponent;$contentCV[unique=true];uid[unique=true];title
    
 # Category Pages
 UPDATE CategoryPage;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
-;;Stuff;Stuff
-;;Clothes;Clothes
+;;C01 		;"Contabilizzazione"
+;;C0101 	;"Contabilizzazione indiretta"
+;;C0102 	;"Moduli di utenza"
+;;C0103 	;"Satelliti di utenza"
+;;GE556 	;"standard"
+;;GE556-1 	;"con doppio scambiatore"
+;;GE556-2 	;"con regolazione elettronica"
+;;GE556-3 	;"per produzione acqua sanitaria"
+;;C02 		;"Sanitario"
+;;C0201 	;"Cassette premontate"
+;;C0202 	;"Accessori"
+;;C0203 	;"Cassette vuote"
+;;R500-2 	;"da incasso per collettori"
+;;R500 		;"da incasso per collettori - 2"
+;;R583 		;"Supporto collettori R580"
+;;R588R 	;"Supporto collettori in cassetta R557"
+;;R588Z 	;"Supporto collettori R553D, R553F"
+;;C03 		;"Riscaldamento"
+;;C0301 	;"Rubinetti a sfera"
+;;C0302 	;"Valvole a sfera"
+;;C0303 	;"Valvole post contatore gas"
+;;R251D 	;"con attacchi F-F"
+;;G213SP 	;"impianti gas sottotraccia"
+;;P790-2 	;"Adattatore per presa di pressione"
+;;R792 		;"Valvola per presa di pressione"
+;;R795V 	;"Kit di collegamento per R790"
+;;C04 		;"Raccorderia"
+;;C0401 	;"Tubazione multistrato"
+;;C0402 	;"Raccordi a pressare serie RM"
+;;C0403 	;"Adattatori per tubi"
+;;R179 		;"Adattatori per tubi in plastica"
+;;R178R 	;"Raccordo - base in adattatore"
+;;C05 		;"Rinnovabili"
+;;C0501 	;"Impianti a biomassa"
+;;C0502 	;"Impianti solari termici"
+;;KTD 		;"Centralina differenziale"
+;;GS550 	;"Gruppo di controllo"
+;;K377 		;"Glicole antigelo propilenico"
+;;P50 		;"Kit raccordi"
+;;R182 		;"Raccordo a T per valvole"
+;;R586S 	;"Gruppo di circolazione"
+;;VES-2 	;"Staffa di fissaggio"
    
 # CMS Navigation Nodes
 INSERT_UPDATE CMSNavigationNode;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
 ;;HybrisSiteRootNode;HybrisSiteRoot
 ;;HybrisNavNode;Hybris Site
-;;ClothesNavNode;Clothes
-;;StuffNavNode;Stuff
+
+;;C01NavNode; C01
+;;C0101NavNode; "Contabilizzazione indiretta"
+;;C0102NavNode; "Moduli di utenza"
+;;C0103NavNode; "Satelliti di utenza"
+;;GE556NavNode; GE556
+;;GE556-1NavNode; GE556-1
+;;GE556-2NavNode; GE556-2
+;;GE556-3NavNode; GE556-3
+;;C02NavNode; C02
+;;C0201NavNode; C0201
+;;C0202NavNode; C0202
+;;C0203NavNode; C0203
+;;R500-2NavNode; R500-2
+;;R500NavNode; R500
+;;R583NavNode; R583
+;;R588RNavNode; R588R
+;;R588ZNavNode; R588Z
+;;C03NavNode; C03
+;;C0301NavNode; C0301
+;;C0302NavNode; C0302
+;;C0303NavNode; C0303
+;;R251DNavNode; R251D
+;;G213SPNavNode; G213SP
+;;P790-2NavNode; P790-2
+;;R792NavNode; R792
+;;R795VNavNode; R795V
+;;C04NavNode; C04
+;;C0401NavNode; C0401
+;;C0402NavNode; C0402
+;;C0403NavNode; C0403
+;;R179NavNode; R179
+;;R178RNavNode; R178R
+;;C05NavNode; C05
+;;C0501NavNode; C0501
+;;C0502NavNode; C0502
+;;KTDNavNode; KTD
+;;GS550NavNode; GS550
+;;K377NavNode; K377
+;;P50NavNode; P50
+;;R182NavNode; R182
+;;R586SNavNode; R586S
+;;VES-2NavNode; VES-2
+
 ;;AcceleratorNavNode;"Accelerator"
 ;;AccessoriesNavNode;"Accessories"
 ;;AccessoryBrandLinksNavNode;"Accessories"
