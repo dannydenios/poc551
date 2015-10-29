@@ -155,48 +155,48 @@ INSERT_UPDATE CMSNavigationNode;$contentCV[unique=true];uid[unique=true];title[l
 ;;HybrisSiteRootNode;HybrisSiteRoot
 ;;HybrisNavNode;Hybris Site
 
-;;C01NavNode; C01
-;;C0101NavNode; "Contabilizzazione indiretta"
-;;C0102NavNode; "Moduli di utenza"
-;;C0103NavNode; "Satelliti di utenza"
-;;GE556NavNode; GE556
-;;GE556-1NavNode; GE556-1
-;;GE556-2NavNode; GE556-2
-;;GE556-3NavNode; GE556-3
-;;C02NavNode; C02
-;;C0201NavNode; C0201
-;;C0202NavNode; C0202
-;;C0203NavNode; C0203
-;;R500-2NavNode; R500-2
-;;R500NavNode; R500
-;;R583NavNode; R583
-;;R588RNavNode; R588R
-;;R588ZNavNode; R588Z
-;;C03NavNode; C03
-;;C0301NavNode; C0301
-;;C0302NavNode; C0302
-;;C0303NavNode; C0303
-;;R251DNavNode; R251D
-;;G213SPNavNode; G213SP
-;;P790-2NavNode; P790-2
-;;R792NavNode; R792
-;;R795VNavNode; R795V
-;;C04NavNode; C04
-;;C0401NavNode; C0401
-;;C0402NavNode; C0402
-;;C0403NavNode; C0403
-;;R179NavNode; R179
-;;R178RNavNode; R178R
-;;C05NavNode; C05
-;;C0501NavNode; C0501
-;;C0502NavNode; C0502
-;;KTDNavNode; KTD
-;;GS550NavNode; GS550
-;;K377NavNode; K377
-;;P50NavNode; P50
-;;R182NavNode; R182
-;;R586SNavNode; R586S
-;;VES-2NavNode; VES-2
+;;C01NavNode; 		"Contabilizzazione"
+;;C0101NavNode; 	"Indiretta"
+;;C0102NavNode; 	"Moduli di utenza"
+;;C0103NavNode; 	"Satelliti di utenza"
+;;GE556NavNode; 	"standard"
+;;GE556-1NavNode; 	"con doppio scambiatore"
+;;GE556-2NavNode; 	"con regolazione elettronica"
+;;GE556-3NavNode; 	"per produzione acqua sanitaria"
+;;C02NavNode; 		"Sanitario"
+;;C0201NavNode; 	"Cassette"
+;;C0202NavNode; 	"Accessori"
+;;C0203NavNode; 	"Cassette vuote"
+;;R500-2NavNode; 	"da incasso per collettori"
+;;R500NavNode; 		"da incasso per collettori - 2"
+;;R583NavNode; 		"Supporto collettori R580"
+;;R588RNavNode; 	"Supporto collettori in cassetta R557"
+;;R588ZNavNode; 	"Supporto collettori R553D, R553F"
+;;C03NavNode; 		"Riscaldamento"
+;;C0301NavNode; 	"Rubinetti a sfera"
+;;C0302NavNode; 	"Valvole a sfera"
+;;C0303NavNode; 	"Valvole post contatore gas"
+;;R251DNavNode; 	"con attacchi F-F"
+;;G213SPNavNode; 	"impianti gas sottotraccia"
+;;P790-2NavNode; 	"Adattatore per presa di pressione"
+;;R792NavNode; 		"Valvola per presa di pressione"
+;;R795VNavNode; 	"Kit di collegamento per R790"
+;;C04NavNode; 		"Raccorderia"
+;;C0401NavNode; 	"Multistrato"
+;;C0402NavNode; 	"Serie RM"
+;;C0403NavNode; 	"Adattatori per tubi"
+;;R179NavNode; 		"Adattatori per tubi in plastica"
+;;R178RNavNode; 	"Raccordo - base in adattatore"
+;;C05NavNode; 		"Rinnovabili"
+;;C0501NavNode; 	"Impianti a biomassa"
+;;C0502NavNode; 	"Impianti solari termici"
+;;KTDNavNode; 		"Centralina differenziale"
+;;GS550NavNode; 	"Gruppo di controllo"
+;;K377NavNode; 		"Glicole antigelo propilenico"
+;;P50NavNode; 		"Kit raccordi"
+;;R182NavNode; 		"Raccordo a T per valvole"
+;;R586SNavNode; 	"Gruppo di circolazione"
+;;VES-2NavNode; 	"Staffa di fissaggio"
 
 ;;AcceleratorNavNode;"Accelerator"
 ;;AccessoriesNavNode;"Accessories"
