@@ -91,7 +91,7 @@
 		<extension name="merchandisefulfilmentprocess" />
 		<extension name="merchandiseinitialdata" />
 		
-		<extension name="newdemo" />
+<!-- 		<extension name="newdemo" /> -->
 		<extension name="giacomini" />
 		
 		<!-- 

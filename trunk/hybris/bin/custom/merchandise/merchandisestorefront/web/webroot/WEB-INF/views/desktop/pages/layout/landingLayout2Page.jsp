@@ -30,8 +30,8 @@
 		<cms:component component="${feature}" />
 	</cms:pageSlot>
 
-	<cms:pageSlot position="Section4" var="feature" element="div" class="span-24">
-		<cms:component component="${feature}" element="div" class="span-6 section4 small_detail ${(elementPos%4 == 3) ? 'last' : ''}"/>
+	<cms:pageSlot position="Section4" var="feature" element="div" class="span-24 section3 cms_disp-img_slot">
+		<cms:component component="${feature}" />
 	</cms:pageSlot>
 
 	<cms:pageSlot position="Section5" var="feature" element="div" class="span-24 section5 cms_disp-img_slot">

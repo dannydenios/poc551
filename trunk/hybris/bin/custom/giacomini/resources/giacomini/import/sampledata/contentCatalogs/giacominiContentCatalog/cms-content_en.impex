@@ -92,7 +92,7 @@ UPDATE CMSTabParagraphComponent;$contentCV[unique=true];uid[unique=true];title[l
   
 # CMS Footer Component
 UPDATE FooterComponent;$contentCV[unique=true];uid[unique=true];notice[lang=$lang]
-;;FooterComponent;© 2015 giacomini - GIACOMINI
+;;FooterComponent;"© GIACOMINI S.P.A. - Via per Alzo, 39 - 28017 San Maurizio d’Opaglio (NO) - ITALY"
   
 # CMS Paragraph Component (Contact information)
 INSERT_UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
@@ -226,11 +226,12 @@ UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];$picture[l
 ;;NextDayDeliveryBanner120;Elec_788x120_HomeDeliveryBanner_EN_01.jpg
    
 UPDATE CMSParagraphComponent;$contentCV[unique=true];uid[unique=true];content[lang=$lang]
-;;welcomeMessage;"<h1>Welcome to the hybris Merchandise Shop</h1>"
+;;welcomeMessage;"<h1>Welcome to the Giacomini website</h1><br><p style=""font-style:italic;font-size:1.5em;"">Our enthusiasm for energy has been with us right from the start. It even comes out in our corporate colour, energising red, and our motto - WATER E-(energy)-MOTION. For Giacomini, energy management means components for energy consumption optimisation and metering, and for the distribution of hot and cold fluids.</p>"
+  
   
 # CMS PurchasedCategorySuggestion Components
 UPDATE PurchasedCategorySuggestionComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
-;;PurchasedCategorySuggestions;"You may also like..."
+#;;PurchasedCategorySuggestions;"You may also like..."
   
 # CMS CartSuggestion Components
 UPDATE CartSuggestionComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang]
