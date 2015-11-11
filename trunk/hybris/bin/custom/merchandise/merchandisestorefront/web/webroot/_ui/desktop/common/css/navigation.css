@@ -3,12 +3,13 @@
 ********************************************************************/
 
 .navigationbarcollectioncomponent{
-	border:1px dotted #a5a5a5;
-	border-width:1px 0 ;
+	font-family: "Lato", Arial, Sans-serif;
+	color: #333333;
 
 	position:relative;
 	z-index:100;
 	clear: both;
+	border-bottom: 1px solid #e3e3e3;
 }
 
 
@@ -19,34 +20,14 @@
 .navigationbarcollectioncomponent  li.La{
 	float:left;
 	text-align:center;
-
+	padding: 20px 0 16px 0;
+    display: inline-block;
+    margin: 0 20px 0 0;
 }
-
 
 .navigationbarcollectioncomponent  li.La > a{
 	display:block;
-	line-height:2.750em;
-	padding: 0 12px;
-}
-
-
-.navigationbarcollectioncomponent li.La:hover{
-
-}
-
-.navigationbarcollectioncomponent li.parent:hover > a{ 
-
-	background:#eee ;
-	margin:0 0 -1px 0;
-	padding-bottom:1px;
-	box-shadow: 4px 4px 4px rgba(0,0,0,0.4);
-}
-
-.navigationbarcollectioncomponent li.parent:hover > a{ 
-	border-left:1px dotted #a5a5a5;
-	border-right:1px dotted #a5a5a5;
-	padding-left:11px;
-	padding-right:11px;
+	color: #333333;
 }
 
 /*
@@ -62,30 +43,53 @@
 	display:block;
 }
 
-
-
-
 .navigationbarcollectioncomponent ul.Lb{
 	position:absolute;
-	background:#eee;
-	left:0;
-	right: 0;
+	background: #333333;
 	text-align:left;
 	padding:20px;
-	border:1px dotted #a5a5a5;
 	z-index:99;
 	border-top:0;
 	width: 908px;
-	top:34px;
 	box-shadow: 4px 4px 4px rgba(0,0,0,0.4);
+	
+	top: 100% !important;
+    left: 0;
+    list-style-image: none;
 	
 }
 
+/*
+.navigationbarcollectioncomponent ul.Lb:before{
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 0;
+    margin-left: 10px;
+    top: -18px;
+    border-width: 10px;
+    border-style: solid outset solid solid;
+    border-color: transparent transparent #333333 transparent;
+}
+*/
 
+.navigationbarcollectioncomponent ul.Lb li a{
+    color: #999999;
+    float: none;
+    width: auto;
+    margin: 0;
+    display: block !important;
+    line-height: 2.5em;
+    font-size: 13px;
+    text-align: left;
+    font-weight: normal;
+    text-transform: none;
+}
 
 .navigationbarcollectioncomponent ul.Lb li.Lb{
 	float:left;
-
+    color: #999999;
 }
 
 
@@ -102,7 +106,7 @@
 
 .navigationbarcollectioncomponent ul.Lb li.Lb .Lc{
 	float:left;
-	width:181px;
+	width:281px;
 }
 
 

@@ -4,63 +4,61 @@
 
 
 #header .siteLogo{
-	padding:20px 0;
+
 }
 
 #header .headerContent{
-	float:right;
+	padding: 10px 0 20px 0;
+	background: #ffffff;
 }
 
 #header .headerContent.secondRow{
-	clear: both;
-	margin:5px 0 0 0;
+	margin-bottom: 10px;
+	position: relative;
+    float: right;
+    width: 65%;
 }
 
 #header .headerContent .nav{
-	height:21px;
-	line-height:1.667em;
-	color:#484848;
-	margin:15px 0 0 0;
+    padding: 0;
+    margin: 0;
+    text-align: right;
+    font-size: 11px;
+    font-family: Arial, Sans-Serif;
+    font-weight: normal;
+    color: #b3b3b3;
+    display:block;
 }
 
 #header .headerContent .nav > li{
-	float:left;
-	border-left:1px solid #000;
-	padding: 0 6px;
-	display:block;
-
+	display: inline-block;
+    white-space: nowrap;
+    list-style: none;
+    margin: 0;
+    line-height: 20px;
+    padding: 0 5px;
 }
-	
 
 #header .headerContent .nav > li:first-child {
 	border:0;
 	padding-left:0;
 }
 
-
 #header .headerContent .nav > li > a{
 	display:block;
 }
-
 
 #header .headerContent .nav > li.miniCart > a{
 	text-transform:lowercase; /*  temp */
 }
 
-
-
-
 #header .headerContent.secondRow .yCmsComponent{
-	float: left;
+	float: right;
 }
 
 #header .headerContent.secondRow .yCmsComponent + .yCmsComponent{
 	margin:0 0 0 10px;
 }
-
-
-
-
 
 .languagecurrencycomponent{
 	margin: 0 10px;
