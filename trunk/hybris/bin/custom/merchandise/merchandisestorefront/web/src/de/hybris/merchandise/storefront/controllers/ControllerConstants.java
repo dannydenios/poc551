@@ -25,6 +25,7 @@ import de.hybris.platform.acceleratorcms.model.components.SimpleResponsiveBanner
 import de.hybris.platform.acceleratorcms.model.components.SubCategoryListComponentModel;
 import de.hybris.platform.cms2.model.contents.components.CMSLinkComponentModel;
 import de.hybris.platform.cms2lib.model.components.ProductCarouselComponentModel;
+import de.hybris.platform.merchandisecore.model.contents.components.CMSProductPromoComponentModel;
 
 
 /**
@@ -61,6 +62,8 @@ public interface ControllerConstants
 			String DynamicBannerComponent = _Prefix + DynamicBannerComponentModel._TYPECODE + _Suffix;
 			String SubCategoryListComponent = _Prefix + SubCategoryListComponentModel._TYPECODE + _Suffix;
 			String SimpleResponsiveBannerComponent = _Prefix + SimpleResponsiveBannerComponentModel._TYPECODE + _Suffix;
+
+			String CMSProductPromoComponent = _Prefix + CMSProductPromoComponentModel._TYPECODE + _Suffix;
 		}
 	}
 

@@ -49,8 +49,16 @@
 		<property name="renderers">
 			<map merge="true">
 				<entry key="CMSLinkComponent" value-ref="cmsLinkComponentRenderer"/>
+				<!-- component to renderer Custom properties-->
+<!-- 				<entry key="CMSProductPromoComponent" value-ref="cmsProductPromoComponentRenderer"/> -->
 			</map>
 		</property>
 	</bean>
+	
+	<!-- CMS Customs -->
+<!-- 	<alias name="defaultCMSProductPromoComponentRenderer" alias="cmsProductPromoComponentRenderer"/> -->
+<!-- 	<bean id="defaultCMSProductPromoComponentRenderer" class="de.hybris.merchandise.storefront.renderer.CMSProductPromoComponentRenderer" > -->
+	
+<!-- 	</bean> -->
 
 </beans>

@@ -12,12 +12,14 @@ $contentPage=contentPage(uid, $contentCV)          ;
 $product=product(code, $productCV)
 $category=category(code, $productCV)
 $siteResource=jar:com.giacomini.constants.GiacominiConstants&/giacomini/import/sampledata/contentCatalogs/$contentCatalog
+$siteResourceBanners=jar:com.giacomini.setup.GiacominiStoreSystemSetup&/giacomini/import/sampledata/contentCatalogs/$contentCatalog/images/banners
 $productResource=jar:com.giacomini.constants.GiacominiConstants&/giacomini/import/sampledata/productCatalogs/$productCatalog
 $jarResourceCms=jar:com.giacomini.constants.GiacominiConstants&/giacomini/import/sampledata/cockpits/cmscockpit
+$mediaTranslator=@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator]
   
 # CMS Site Settings
 UPDATE CMSSite                            ; uid[unique=true]           ; defaultPreviewCategory(code, $productCV)             ; defaultPreviewProduct(code, $productCV)
-                                          ; giacomini                  ; C01                                                  ; 0007
+                                          ; giacomini                  ; C01                                                  ; GE556Y301
   
 # Site Logo
 INSERT_UPDATE Media                       ; $contentCV[unique=true]    ; code[unique=true]                                    ; realfilename                    ; @media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator]        ; mime[default='image/jpeg']            ; altText                                  ; folder(qualifier)[default='images']
@@ -218,7 +220,7 @@ INSERT_UPDATE ProductReferencesComponent           ; $contentCV[unique=true]    
   
 # CMS PurchasedCategorySuggestion Components
 INSERT_UPDATE PurchasedCategorySuggestionComponent ; $contentCV[unique=true]    ; uid[unique=true]                                     ; name                                                                                                                                                                                                           ; productReferenceTypes(code)                                                                                                                                                                                                                  ; maximumNumberProducts                                                                                                                                                            ; filterPurchased                          ; category(code, $productCV)                  ; &componentRef
-                                                   ;                            ; PurchasedCategorySuggestions                         ; Purchased Category Suggestions                                                                                                                                                                                 ; OTHERS                                                                                                                                                                                                                                       ; 10                                                                                                                                                                               ; true                                     ; 100                                         ; PurchasedCategorySuggestions
+                                                   ;                            ; PurchasedCategorySuggestions                         ; Purchased Category Suggestions                                                                                                                                                                                 ; OTHERS                                                                                                                                                                                                                                       ; 10                                                                                                                                                                               ; true                                     ; C01                                         ; PurchasedCategorySuggestions
   
 # CMS CartSuggestion Components
 INSERT_UPDATE CartSuggestionComponent              ; $contentCV[unique=true]    ; uid[unique=true]                                     ; name                                                                                                                                                                                                           ; productReferenceTypes(code)                                                                                                                                                                                                                  ; maximumNumberProducts                                                                                                                                                            ; filterPurchased                          ; &componentRef
@@ -751,3 +753,32 @@ INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;c
   
 INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='multiStepCheckoutSummaryPage'];contentSlot(uid,$contentCV)[unique=true]
 ;;Side-CheckoutSummary;SideContent;;SideContent-CheckoutSummary
+
+##################################### EDITED
+INSERT_UPDATE MediaFolder;qualifier[unique=true];path[unique=true]
+;banners;banners
+
+INSERT_UPDATE MediaFormat;qualifier[unique=true]
+;950Wx410H
+  
+# Create Media
+INSERT_UPDATE Media;mediaFormat(qualifier);code[unique=true];$mediaTranslator;mime[default='image/jpg'];$contentCV[unique=true];folder(qualifier)
+;950Wx410H;Gas_Distribution_Giacomini.jpg;		$siteResourceBanners/Gas_Distribution_Giacomini.jpg		;;;banners
+;950Wx410H;Renewable_Sources_Giacomini.jpg;		$siteResourceBanners/Renewable_Sources_Giacomini.jpg	;;;banners
+;950Wx410H;Water_Management_Giacomini.jpg;		$siteResourceBanners/Water_Management_Giacomini.jpg		;;;banners
+
+### Banners
+INSERT_UPDATE BannerComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;urlLink;media(code, $contentCV)
+;;promobanner1;promobanner1;promobanner1;;Gas_Distribution_Giacomini.jpg;	
+;;promobanner2;promobanner2;promobanner2;;Renewable_Sources_Giacomini.jpg;	
+;;promobanner3;promobanner3;promobanner3;;Water_Management_Giacomini.jpg;	
+
+INSERT_UPDATE RotatingImagesComponent;$contentCV[unique=true];uid[unique=true];name;banners(&componentRef);&componentRef
+;;BannersHomepageRotatingImagesComponent;Banners Homepage Rotating Images Component;promobanner1,promobanner2,promobanner3;BannersHomepageRotatingImagesComponent
+
+INSERT_UPDATE CMSProductPromoComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;$product
+;;productHome1;productHome1;productHome1;R500Y222
+
+INSERT_UPDATE ContentSlot           ; $contentCV[unique=true]    ; uid[unique=true]          ; name                              ; active       ; cmsComponents(&componentRef)
+                                    ;                            ; Section4Slot-Homepage     ; Section4 Slot for Homepage        ; true         ; productHome1
+

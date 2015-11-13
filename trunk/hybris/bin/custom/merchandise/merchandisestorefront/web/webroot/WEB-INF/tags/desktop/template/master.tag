@@ -18,6 +18,7 @@
 <!DOCTYPE html>
 <html lang="${currentLanguage.isocode}">
 <head>
+	<link href="//fonts.googleapis.com/css?family=Lato:400,300" rel="stylesheet" type="text/css">
 	<title>
 		${not empty pageTitle ? pageTitle : not empty cmsPage.title ? cmsPage.title : 'Accelerator Title'}
 	</title>
@@ -48,7 +49,6 @@
 </head>
 
 <body class="${pageBodyCssClasses} ${cmsPageRequestContextData.liveEdit ? ' yCmsLiveEdit' : ''} language-${currentLanguage.isocode}">
-
 	<%-- Inject the page body here --%>
 	<jsp:doBody/>
 
