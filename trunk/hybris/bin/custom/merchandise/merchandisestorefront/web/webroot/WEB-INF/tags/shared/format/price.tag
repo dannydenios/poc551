@@ -17,7 +17,15 @@
 			<spring:theme code="text.free" text="FREE"/>
 		</c:if>
 		<c:if test="${not displayFreeForZero}">
-			${priceData.formattedValue}
+		<%-- Custom Behaviour -- null price case --%>
+			<c:choose>
+				<c:when test="${not empty priceData.formattedValue}">
+					${priceData.formattedValue}
+				</c:when>
+				<c:otherwise>
+					N.A.
+				</c:otherwise>
+			</c:choose>
 		</c:if>
 	</c:otherwise>
 </c:choose>

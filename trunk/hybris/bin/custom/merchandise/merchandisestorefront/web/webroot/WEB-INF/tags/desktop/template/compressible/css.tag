@@ -79,3 +79,6 @@
 <c:forEach items="${addOnThemeCssPaths}" var="addOnThemeCss">
 	<link rel="stylesheet" type="text/css" media="all" href="${addOnThemeCss}"/>
 </c:forEach>
+
+<%-- Custom css --%>
+<link rel="stylesheet" type="text/css" media="all" href="${commonResourcePath}/css/custom/custom.css"/>

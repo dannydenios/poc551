@@ -1,0 +1,57 @@
+.ProductImage {
+	display: block;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.ProductDetails {
+    
+    display: block;
+    padding-bottom: 5px;
+    line-height: 18px;
+    text-align: center;
+    
+    text-decoration: none;
+    cursor: auto;
+}
+
+.ProductDetails > a,em {
+	display: block;
+	
+	font-family: Arial, Sans-Serif;
+    font-weight: normal;
+    font-size: 14px;
+}
+
+.ProductActionAdd {
+    text-align: center;
+}
+
+.ProductActionAdd .btn {
+	text-align: center;
+	background-color: #333333;
+	color: #ffffff;
+	
+	cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    text-transform: uppercase;
+    border: none;
+    font-family: 'Lato', sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    height: 35px;
+    line-height: 35px;
+    letter-spacing: 1px;
+    padding: 0 1.2em;
+    -webkit-border-radius: 0;
+    border-radius: 0;
+    vertical-align: middle;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    
+    margin-top: 15px;
+    margin-bottom: 20px;
+}

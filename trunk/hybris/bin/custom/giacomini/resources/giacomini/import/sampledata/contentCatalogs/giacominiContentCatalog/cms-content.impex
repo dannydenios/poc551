@@ -776,9 +776,18 @@ INSERT_UPDATE BannerComponent;$contentCV[unique=true];uid[unique=true];name;&com
 INSERT_UPDATE RotatingImagesComponent;$contentCV[unique=true];uid[unique=true];name;banners(&componentRef);&componentRef
 ;;BannersHomepageRotatingImagesComponent;Banners Homepage Rotating Images Component;promobanner1,promobanner2,promobanner3;BannersHomepageRotatingImagesComponent
 
+### Home Page Promo
 INSERT_UPDATE CMSProductPromoComponent;$contentCV[unique=true];uid[unique=true];name;&componentRef;$product
 ;;productHome1;productHome1;productHome1;R500Y222
+;;productHome2;productHome2;productHome2;GE556Y152
+;;productHome3;productHome3;productHome3;R251X22
+;;productHome4;productHome4;productHome4;G213SP004
+;;productHome5;productHome5;productHome5;P790Y002
+;;productHome6;productHome6;productHome6;R792Y004
+;;productHome7;productHome7;productHome7;R795VY004
+;;productHome8;productHome8;productHome8;R178RY011
 
 INSERT_UPDATE ContentSlot           ; $contentCV[unique=true]    ; uid[unique=true]          ; name                              ; active       ; cmsComponents(&componentRef)
-                                    ;                            ; Section4Slot-Homepage     ; Section4 Slot for Homepage        ; true         ; productHome1
+                                    ;                            ; Section4Slot-Homepage     ; Section4 Slot for Homepage        ; true         ; productHome1,productHome2,productHome3,productHome4,productHome5,productHome6,productHome7,productHome8
+
 
